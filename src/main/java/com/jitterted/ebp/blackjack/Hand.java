@@ -33,9 +33,11 @@ public class Hand {
     System.out.println(cards.get(0).display());
   }
 
-  // DON'T ALLOW DECISIONS BASED ON THIS VALUE TO BE MADE OUTSIDE OF THIS CLASS
-  // FEATURE ENVY!
-  int value() {
+  boolean valueEqualTo(int value) {
+    return value() == value;
+  }
+
+  private int value() {
     int handValue = cards
         .stream()
         .mapToInt(Card::rankValue)
@@ -47,7 +49,7 @@ public class Hand {
         .anyMatch(card -> card.rankValue() == 1);
 
     // if the total hand value <= 11, then count the Ace as 11 by adding 10
-    if (hasAce && handValue < 11) {
+    if (hasAce && handValue <= 11) {
       handValue += 10;
     }
 
