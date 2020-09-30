@@ -8,7 +8,6 @@ public class Card {
   private final Suit suit;
   private final String rank; // changes last
 
-  @Deprecated
   public Card(Suit suit, String rank) {
     this.suit = suit;
     this.rank = rank;
